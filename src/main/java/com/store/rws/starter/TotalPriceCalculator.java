@@ -7,6 +7,12 @@ import com.store.rws.entity.User;
 import com.store.rws.helper.DiscountCalculationStrategy;
 import com.store.rws.helper.DiscountCalculationStrategyFactory;
 
+/**
+ * Class responsibile getting discounted price by invoking appropriate the factory method
+ * 
+ * @author Sreejith
+ *
+ */
 public class TotalPriceCalculator {
 
 	private final DiscountCalculationStrategyFactory discountCalculationStrategyFactory = new DiscountCalculationStrategyFactory();

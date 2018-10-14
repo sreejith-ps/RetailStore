@@ -4,6 +4,12 @@ import org.joda.time.DateTime;
 
 import com.store.rws.constants.UserTypes;
 
+/**
+ * User entity class 
+ * 
+ * @author Sreejith
+ *
+ */
 public class User {
 	private String name;
 	private DateTime registrationDate;
@@ -11,6 +17,10 @@ public class User {
 	private UserTypes userType;
 	private double discountPercentage;
 
+	/**
+	 * Constructor 
+	 * @param userType
+	 */
 	public User(UserTypes userType) {
 		this.userType = userType;
 	}

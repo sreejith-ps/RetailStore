@@ -1,5 +1,11 @@
 package com.store.rws.entity;
 
+/**
+ * Product entity class which represents each item and it's attributes
+ * 
+ * @author Sreejith
+ *
+ */
 public class Product {
 	public enum ProductCategory {GROCERY, OTHER};
 	private Integer id;

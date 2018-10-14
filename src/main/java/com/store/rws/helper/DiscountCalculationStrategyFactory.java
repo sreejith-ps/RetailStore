@@ -4,7 +4,12 @@ import com.store.rws.constants.UserTypes;
 import com.store.rws.entity.Customer;
 import com.store.rws.entity.Employee;
 import com.store.rws.entity.User;
-
+/**
+ * Factory class to get the appropriate price engine based on user
+ * 
+ * @author Sreejith
+ *
+ */
 public class DiscountCalculationStrategyFactory {
 	private final DiscountCalculationStrategy employeeDiscountCalculationStrategy = new EmployeeDiscountCalculationStrategy();
 	private final DiscountCalculationStrategy affiliateDiscountCalculationStrategy = new AffliliateDiscountCalculationStrategy();

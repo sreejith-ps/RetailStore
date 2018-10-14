@@ -13,7 +13,12 @@ import com.store.rws.entity.Product;
 import com.store.rws.entity.Product.ProductCategory;
 import com.store.rws.starter.TotalPriceCalculator;
 import com.store.rws.entity.User;
-
+/**
+ * Class for JUnit test cases
+ * 
+ * @author Sreejith
+ *
+ */
 public class TotalPriceCalculatorTest {
 
 	TotalPriceCalculator totalPriceCalculator;
@@ -105,6 +110,8 @@ public class TotalPriceCalculatorTest {
 		Double total = totalPriceCalculator.calculateDiscountedTotal(items, user);
 		assertEquals(total , new Double(1525));
 	}
+	
+
 	
 
 }

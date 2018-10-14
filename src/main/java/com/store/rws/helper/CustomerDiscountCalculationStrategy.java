@@ -15,7 +15,6 @@ import com.store.rws.entity.User;
  */
 public class CustomerDiscountCalculationStrategy implements DiscountCalculationStrategy {
 	private static final double DISCOUNT_PERCENTAGE = 5;
-	public static final double DISCOUNT_FOR_100 = 5;
 	
 
 	/**
@@ -27,6 +26,7 @@ public class CustomerDiscountCalculationStrategy implements DiscountCalculationS
 	public double calculateDiscountedTotal(List<Product> items, User user) {
 		double totalPrice = 0;
 		double totalDisPrice = 0;
+		double totalGrocPrice = 0;
 //		DateTime d = new DateTime();
 		
 		if (null == user.getRegistrationDate()) {
@@ -45,7 +45,7 @@ public class CustomerDiscountCalculationStrategy implements DiscountCalculationS
 			System.out.println("Item price - " + product.getPrice());
 			
 			if(ProductCategory.GROCERY.name().equals(product.getCategory())) {
-				totalDisPrice += product.getPrice();
+				totalGrocPrice += product.getPrice();
 			} else {
 				totalDisPrice += product.getPrice() * (100 - DISCOUNT_PERCENTAGE) / 100 ;
 			}
@@ -57,8 +57,8 @@ public class CustomerDiscountCalculationStrategy implements DiscountCalculationS
 		// below logic is implemented on an assumption user will go for option where he will get more discount 
 //		if (2 < period.getYears()) {
 		if (2 < user.getNumberOfYearsSinceRgistered()) {
-			double discountedPriceByTotal = totalPrice - (Math.floor(totalDisPrice/100) * DISCOUNT_FOR_100);
-			totalDisPrice = totalDisPrice < discountedPriceByTotal ? totalDisPrice : discountedPriceByTotal;
+			double discountedPriceByTotal = totalPrice - (Math.floor(totalPrice/100) * DISCOUNT_FOR_100);
+			totalDisPrice = (totalDisPrice + totalGrocPrice) < discountedPriceByTotal ? (totalDisPrice + totalGrocPrice) : discountedPriceByTotal;
 			System.out.println("Discount applied : " + (totalDisPrice < discountedPriceByTotal ? "Percentage" : "5 on every 100"));
 		} else {
 			totalDisPrice = totalPrice - (Math.round(totalDisPrice/100) * DISCOUNT_FOR_100);
