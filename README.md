@@ -8,7 +8,8 @@ Product represents each purchase item. price is calculated for item purchased no
 ## How to run :
 In command line, go to the folder where jar file is located and run "java -jar RetailWebStore-0.0.1-SNAPSHOT.jar"
 
-or import to eclipse as maven project and run Billing.java as Java application
+or import to eclipse as maven project and run Billing.java as Java application.
+
 Input values as per the directions given and the result will be printed in console.
 
 ## How to run JUnit:
