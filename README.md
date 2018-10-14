@@ -20,5 +20,5 @@ Use below command in project folder to generate test report:
 mvn surefire-report:report 
 
 
-##Note
+## Note
 Across output classes, System.out.println is used for purpose of output illustration which will not be the case in acutal implementation
