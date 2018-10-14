@@ -1,7 +1,7 @@
 # Retail web store - Discount Pricing Engine
 Project to calculate the net price after the dicount applied on items  based on various criterias
 
-Used factory pattern and inheritance as it found to be the most appropriate one for this case though there are other ways of implementation applying other object oriented concepts
+Used factory pattern and inheritance as these are found to be more appropriate in this case though there are other ways of implementation by applying other object oriented concepts
 
 ## How to run :
 In command line go the folder where jar file is located and run "java -jar RetailWebStore-0.0.1-SNAPSHOT.jar"
