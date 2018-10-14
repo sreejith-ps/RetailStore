@@ -3,6 +3,8 @@ Project to calculate the net price after the dicount applied on items  based on 
 
 Used factory pattern and inheritance as these are found to be more appropriate in this case though there are other ways of implementation by applying other object oriented concepts
 
+Product represents each purchase item. price is calculated for item purchased not the unit price
+
 ## How to run :
 In command line go the folder where jar file is located and run "java -jar RetailWebStore-0.0.1-SNAPSHOT.jar"
 
