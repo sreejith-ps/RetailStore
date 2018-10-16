@@ -34,15 +34,7 @@ public class CustomerDiscountCalculationStrategy implements DiscountCalculationS
 		}
 //		Period period = new Period(user.getRegistrationDate(), d);
 		
-
-		System.out.println(" ***************************** ");
-		System.out.println(" User Type - " + UserTypes.CUSTOMER);
-		System.out.println(" ***************************** ");
-		
 		for (Product product : items) {
-			System.out.println("Item Name - " + product.getName());
-			System.out.println("Item category - " + product.getCategory());
-			System.out.println("Item price - " + product.getPrice());
 			
 			if(ProductCategory.GROCERY.name().equals(product.getCategory())) {
 				totalGrocPrice += product.getPrice();
@@ -50,8 +42,6 @@ public class CustomerDiscountCalculationStrategy implements DiscountCalculationS
 				totalDisPrice += product.getPrice() * (100 - DISCOUNT_PERCENTAGE) / 100 ;
 			}
 			totalPrice += product.getPrice();
-
-			System.out.println("-----------------------------------------");
 		}
 
 		// below logic is implemented on an assumption user will go for option where he will get more discount 
@@ -59,14 +49,9 @@ public class CustomerDiscountCalculationStrategy implements DiscountCalculationS
 		if (2 < user.getNumberOfYearsSinceRgistered()) {
 			double discountedPriceByTotal = totalPrice - (Math.floor(totalPrice/100) * DISCOUNT_FOR_100);
 			totalDisPrice = (totalDisPrice + totalGrocPrice) < discountedPriceByTotal ? (totalDisPrice + totalGrocPrice) : discountedPriceByTotal;
-			System.out.println("Discount applied : " + (totalDisPrice < discountedPriceByTotal ? "Percentage" : "5 on every 100"));
 		} else {
 			totalDisPrice = totalPrice - (Math.round(totalDisPrice/100) * DISCOUNT_FOR_100);
-			System.out.println("Discount applied : 5 on every 100");
 		}
-		
-		System.out.println("Net payable after discount- " + totalDisPrice);
-		System.out.println("\n");
 		return totalDisPrice;
 	}
 

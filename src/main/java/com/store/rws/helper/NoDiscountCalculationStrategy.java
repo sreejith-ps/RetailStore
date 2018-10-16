@@ -27,23 +27,10 @@ public class NoDiscountCalculationStrategy implements DiscountCalculationStrateg
 	@Override
 	public double calculateDiscountedTotal(List<Product> items, User user) {
 		double totalDisPrice = 0;
-		
 
-		System.out.println(" ***************************** ");
-		System.out.println(" User Type - " + UserTypes.CUSTOMER);
-		System.out.println(" ***************************** ");
-		
 		for (Product product : items) {
-			System.out.println("Item Name - " + product.getName());
-			System.out.println("Item category - " + product.getCategory());
-			System.out.println("Item price - " + product.getPrice());
-			
 			totalDisPrice += product.getPrice();
-			
-			System.out.println("-----------------------------------------");
 		}
-		System.out.println("Net payable - " + totalDisPrice);
-		System.out.println("\n");
 		return totalDisPrice;
 	}
 

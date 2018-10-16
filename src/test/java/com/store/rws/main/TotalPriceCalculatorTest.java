@@ -1,18 +1,22 @@
 package com.store.rws.main;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.store.rws.constants.UserTypes;
+import com.store.rws.entity.Affiliate;
+import com.store.rws.entity.Customer;
+import com.store.rws.entity.Employee;
 import com.store.rws.entity.Product;
 import com.store.rws.entity.Product.ProductCategory;
-import com.store.rws.starter.TotalPriceCalculator;
 import com.store.rws.entity.User;
+import com.store.rws.starter.TotalPriceCalculator;
 /**
  * Class for JUnit test cases
  * 
@@ -52,7 +56,7 @@ public class TotalPriceCalculatorTest {
 	@Test
 	public void testCalculateDiscountedTotalEmployee() {
 		
-		User user = new User(UserTypes.EMPLOYEE);
+		User user = new Employee();
 //		user.setRegistrationDate(new DateTime());
 		user.setNumberOfYearsSinceRgistered(1);
 		
@@ -71,7 +75,7 @@ public class TotalPriceCalculatorTest {
 	@Test
 	public void testCalculateDiscountedTotalAffiliate() {
 
-		User user = new User(UserTypes.AFFLIATE);
+		User user = new Affiliate();
 //		user.setRegistrationDate(new DateTime());
 		user.setNumberOfYearsSinceRgistered(1);
 		
@@ -81,7 +85,7 @@ public class TotalPriceCalculatorTest {
 	
 	@Test
 	public void testCalculateDiscountedTotalCustomer() {
-		User user = new User(UserTypes.CUSTOMER);
+		User user = new Customer();
 //		user.setRegistrationDate(new DateTime());
 		user.setNumberOfYearsSinceRgistered(2);
 		
@@ -93,7 +97,7 @@ public class TotalPriceCalculatorTest {
 	
 	@Test
 	public void testCalculateDiscountedTotalCustomerWithoutRegDate() {
-		User user = new User(UserTypes.CUSTOMER);
+		User user = new Customer();
 		
 		Double total = totalPriceCalculator.calculateDiscountedTotal(items, user);
 		assertEquals(total , new Double(1525));
@@ -103,7 +107,7 @@ public class TotalPriceCalculatorTest {
 	
 	@Test
 	public void testCalculateDiscountedTotalCustomerOlderthan2Years() {
-		User user = new User(UserTypes.CUSTOMER);
+		User user = new Customer();
 //		user.setRegistrationDate(new DateTime().minusYears(3));
 		user.setNumberOfYearsSinceRgistered(3);
 		
@@ -111,7 +115,11 @@ public class TotalPriceCalculatorTest {
 		assertEquals(total , new Double(1525));
 	}
 	
-
+	@After
+    public void clear() {
+		totalPriceCalculator = null;
+		items = null;
+	}
 	
 
 }

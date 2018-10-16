@@ -3,15 +3,19 @@ package com.store.rws.starter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+import java.util.logging.Logger;
 
 import com.store.rws.constants.UserTypes;
+import com.store.rws.entity.Affiliate;
+import com.store.rws.entity.Customer;
+import com.store.rws.entity.Employee;
 import com.store.rws.entity.Product;
 import com.store.rws.entity.Product.ProductCategory;
 import com.store.rws.entity.User;
 
 public class Billing {
-	
+
+	static Logger logger = Logger.getLogger("Billing");
 	TotalPriceCalculator totalPriceCalculator = new TotalPriceCalculator();
 	
 	public static void main(String[] a) {
@@ -23,13 +27,13 @@ public class Billing {
 		int userType = reader.nextInt();
 		User user = null;
 		switch (userType) {
-		case 1: user = new User(UserTypes.EMPLOYEE);
+		case 1: user = new Employee();
 		break;
-		case 2: user = new User(UserTypes.AFFLIATE);
+		case 2: user = new Affiliate();
 		break;
-		case 3: user = new User(UserTypes.CUSTOMER);
+		case 3: user = new Customer();
 		break;
-		default: user = new User(UserTypes.CUSTOMER);
+		default: user = new Customer();
 		
 		}
 		System.out.println("Enter number of years since you registered : ");
@@ -67,7 +71,13 @@ public class Billing {
 		}
 		
 		reader.close();
-		new Billing().totalPriceCalculator.calculateDiscountedTotal(items, user);
+		
+		try {
+			new Billing().totalPriceCalculator.calculateDiscountedTotal(items, user);
+		} catch (Exception e) {
+			
+			logger.log(logger.getLevel().SEVERE, e.getMessage());
+		}
 		
 		
 		
